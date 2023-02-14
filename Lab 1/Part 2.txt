@@ -1,0 +1,29 @@
+CC=g++    --> The compiler is specified by this.
+
+CFLAGS=-I    --> Including the path of the files.
+
+CFLAGS+=-Wall    --> Enabling all the warnings.
+
+CFLAGS+=-c    --> To compile the files
+
+AR=ar    --> To maintain the archive libraries.
+
+pidUtil: pidUtil.cpp    --> pidUtil.cpp is included to create the pidUtil.
+
+    $(CC) $(CFLAGS) pidUtil.cpp -o pidUtil.o    --> Telling the compiler to make an executable named pidUtil.o
+
+lib: pidUtil.o    --> To input pidUtil.o to create the target library.
+
+    $(AR) rcs libPidUtil.a pidUtil.o    --> Create,replace or sort archive files.
+
+clean:    --> Command to clean
+
+    rm -f *.o *.a    --> To clean all the archive,including object files.
+
+install:    --> Target for copy
+
+    cp libPidUtil.a ../.    --> Copying the static library 
+
+    cp pidUtil.h ../.    --> Copying the header file.
+
+all: pidUtil lib    --> Calling the targets.
